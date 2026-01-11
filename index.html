@@ -438,34 +438,34 @@
         }
 
         async function fetchAirGradient() {
-            try {
-                addLog('Fetching AirGradient data...');
-                const response = await fetch('/api/fetch-air-data');
+    try {
+        addLog('Fetching AirGradient data...');
 
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
-                }
-
-                const data = await response.json();
-                console.log('AirGradient Response:', data);
-
-                // Ajusta estos campos según el JSON real devuelto por /latest/air-data
-                if (data.pm25 !== undefined) currentData.pm25 = data.pm25;
-                if (data.pm10 !== undefined) currentData.pm10 = data.pm10;
-                if (data.nox !== undefined) currentData.no2 = data.nox;
-                if (data.co2 !== undefined) currentData.co2 = data.co2;
-                if (data.temperature !== undefined) currentData.tempGarden = data.temperature;
-                if (data.humidity !== undefined) currentData.humidityGarden = data.humidity;
-
-                updateUI();
-                addLog('AirGradient data updated', 'success');
-                return true;
-            } catch (error) {
-                addLog(`AirGradient Error: ${error.message}`, 'error');
-                console.error('AirGradient Error:', error);
-                return false;
-            }
+        const response = await fetch('/api/fetch-air-data');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
         }
+
+        const data = await response.json();
+        console.log('AirGradient Response:', data);
+
+        // Ajusta estas claves según la respuesta real de /latest/air-data
+        if (data.pm25 !== undefined) currentData.pm25 = data.pm25;
+        if (data.pm10 !== undefined) currentData.pm10 = data.pm10;
+        if (data.nox !== undefined) currentData.no2 = data.nox;
+        if (data.co2 !== undefined) currentData.co2 = data.co2;
+        if (data.temperature !== undefined) currentData.tempGarden = data.temperature;
+        if (data.humidity !== undefined) currentData.humidityGarden = data.humidity;
+
+        updateUI();
+        addLog('AirGradient data updated', 'success');
+        return true;
+    } catch (error) {
+        addLog(`AirGradient Error: ${error.message}`, 'error');
+        console.error('AirGradient Error:', error);
+        return false;
+    }
+}
 
         async function fetchWeather() {
             try {

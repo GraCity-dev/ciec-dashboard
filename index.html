@@ -76,25 +76,6 @@
             color: var(--color-text-dark);
         }
 
-        nav {
-            display: flex;
-            gap: var(--spacing-xl);
-            align-items: center;
-        }
-
-        nav a {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-dark);
-            text-decoration: none;
-            transition: color 0.2s;
-            letter-spacing: -0.2px;
-        }
-
-        nav a:hover {
-            color: var(--color-primary);
-        }
-
         .status-badge {
             display: inline-block;
             padding: 4px 12px;
@@ -109,6 +90,11 @@
         .status-badge.updating {
             background-color: rgba(0, 102, 161, 0.1);
             color: var(--color-secondary);
+        }
+
+        .status-badge.error {
+            background-color: rgba(192, 21, 47, 0.1);
+            color: var(--color-danger);
         }
 
         /* MAIN CONTAINER */
@@ -236,28 +222,6 @@
         .status-satellite {
             background-color: rgba(212, 212, 207, 0.5);
             color: var(--color-grey-800);
-        }
-
-        /* INFO BOX */
-        .info-box {
-            background-color: var(--color-bg-light);
-            border-left: 3px solid var(--color-primary);
-            padding: var(--spacing-lg);
-            margin: var(--spacing-xl) 0;
-            border-radius: 2px;
-        }
-
-        .info-box-title {
-            font-weight: 700;
-            font-size: 13px;
-            color: var(--color-text-dark);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .info-box-text {
-            font-size: 13px;
-            color: var(--color-grey-600);
-            line-height: 1.6;
         }
 
         /* FOOTER */
@@ -440,23 +404,6 @@
     </footer>
 
     <script>
-        // CONFIG - PRODUCTION TOKENS
-        const CONFIG = {
-            LOCATION_NAME: "Vicálvaro, Madrid",
-            LOCATION_COORDS: { lat: 40.3917, lng: -3.5910 },
-            REFRESH_INTERVAL: 60000,
-
-            AIRGRADIENT_LOCATION_ID: "73973",
-            AIRGRADIENT_API_KEY: "1fdbb68d-73a2-4d82-b6aa-05cb7d9c0ec1",
-
-            PLANTAE_API_KEY: "6b7e3a5e-fd35-41c1-a126-1b7e10fb8d38",
-            PLANTAE_DEVICE_ID: "",
-
-            WEATHER_API_KEY: "1633c2c0ae902b6f58dde64c8335ce5b",
-            WEATHER_CITY: "Madrid",
-            WEATHER_DEVICE_ID: "1117"
-        };
-
         // DATA STORE
         let currentData = {
             pm25: null,
@@ -513,14 +460,21 @@
             document.getElementById('last-update').textContent = new Date().toLocaleTimeString('es-ES');
         }
 
-               // FETCH AIRGRADIENT via Vercel Proxy
+        // FETCH AIRGRADIENT
         async function fetchAirGradient() {
             try {
                 addLog('Fetching AirGradient data...');
-                const url = `/api/proxy?source=airgradient`;
+                const locationId = '73973';
+                const apiKey = '1fdbb68d-73a2-4d82-b6aa-05cb7d9c0ec1';
                 
-                               const response = await fetch(url);
-
+                const response = await fetch(
+                    `https://api.airgradient.com/public/api/v1/locations/${locationId}/latest/air-data`,
+                    {
+                        headers: {
+                            'x-api-key': apiKey
+                        }
+                    }
+                );
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
@@ -563,13 +517,16 @@
             }
         }
 
-                // FETCH WEATHER via Vercel Proxy
+        // FETCH WEATHER
         async function fetchWeather() {
             try {
                 addLog('Fetching OpenWeatherMap data...');
-                const url = `/api/proxy?source=weather`;
+                const city = 'Madrid';
+                const apiKey = '1633c2c0ae902b6f58dde64c8335ce5b';
                 
-                const response = await fetch(url);
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+                );
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
@@ -604,24 +561,27 @@
             if (ag || weather) {
                 document.getElementById('footer-status').textContent = 'Live';
                 document.getElementById('status-badge').classList.remove('updating');
+                document.getElementById('status-badge').classList.remove('error');
                 document.getElementById('status-badge').textContent = 'Live Monitoring';
                 addLog('✓ Data updated successfully', 'success');
             } else {
                 document.getElementById('footer-status').textContent = 'Error';
+                document.getElementById('status-badge').classList.add('error');
+                document.getElementById('status-badge').textContent = 'Connection Error';
                 addLog('⚠ Some APIs failed', 'warning');
             }
         }
 
         // INIT
         addLog('GraCity Dashboard initialized');
-        addLog(`Location: ${CONFIG.LOCATION_NAME}`);
-        addLog(`Update interval: ${CONFIG.REFRESH_INTERVAL / 1000}s`);
+        addLog('Location: Vicálvaro, Madrid');
+        addLog('Update interval: 60s');
 
         // First fetch
         refreshData();
 
         // Auto-refresh every 60 seconds
-        setInterval(refreshData, CONFIG.REFRESH_INTERVAL);
+        setInterval(refreshData, 60000);
     </script>
 </body>
 </html>

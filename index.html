@@ -584,15 +584,14 @@
         }
 
         // REFRESH DATA
-                async function refreshData() {
+                       async function refreshData() {
             addLog('------- Refresh Cycle Started -------');
             document.getElementById('status-badge').classList.add('updating');
             document.getElementById('status-badge').textContent = 'Updating...';
             
-            const ag = await fetchAirGradient();
             const weather = await fetchWeather();
             
-            if (ag && weather) {
+            if (weather) {
                 document.getElementById('footer-status').textContent = 'Live';
                 document.getElementById('status-badge').classList.remove('updating');
                 document.getElementById('status-badge').classList.remove('error');

@@ -542,9 +542,10 @@
         }
 
         // Initialize MQTT on page load
-        window.addEventListener('DOMContentLoaded', () => {
+               // Initialize MQTT after all scripts are loaded
+        setTimeout(() => {
             initMQTT();
-        });
+        }, 1000);
 
         // Fallback: Keep fetchAirGradient for local data if MQTT fails
         async function fetchAirGradient() {
@@ -609,12 +610,13 @@
         addLog('GraCity Dashboard initialized');
         addLog('Location: Vicálvaro, Madrid');
         addLog('Update interval: 60s');
-
+        
         // First fetch
         refreshData();
-
+        
         // Auto-refresh every 60 seconds
         setInterval(refreshData, 60000);
+
     </script>
 </body>
 </html>

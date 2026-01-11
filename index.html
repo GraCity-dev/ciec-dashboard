@@ -95,21 +95,20 @@
             color: var(--color-primary);
         }
 
-        .cta-header {
-            padding: 8px 16px;
-            border: 1px solid var(--color-grey-300);
-            background-color: transparent;
-            color: var(--color-text-dark);
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--color-success);
+            font-size: 11px;
+            font-weight: 600;
             border-radius: 2px;
-            transition: all 0.2s;
+            text-transform: uppercase;
         }
 
-        .cta-header:hover {
-            border-color: var(--color-primary);
-            background-color: var(--color-bg-light);
+        .status-badge.updating {
+            background-color: rgba(0, 102, 161, 0.1);
+            color: var(--color-secondary);
         }
 
         /* MAIN CONTAINER */
@@ -148,45 +147,6 @@
             max-width: 640px;
         }
 
-        .hero-ctas {
-            display: flex;
-            gap: var(--spacing-md);
-            align-items: center;
-        }
-
-        .btn-primary {
-            padding: 12px 24px;
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.2s;
-            letter-spacing: -0.2px;
-        }
-
-        .btn-primary:hover {
-            background-color: #0f4a38;
-        }
-
-        .btn-secondary {
-            padding: 12px 0;
-            background-color: transparent;
-            color: var(--color-text-dark);
-            border: none;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: underline;
-            transition: color 0.2s;
-        }
-
-        .btn-secondary:hover {
-            color: var(--color-primary);
-        }
-
         /* SECTION STYLES */
         .section {
             padding: var(--spacing-3xl) 0;
@@ -204,79 +164,6 @@
             margin-bottom: var(--spacing-md);
             color: var(--color-text-dark);
             letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            font-size: 14px;
-            color: var(--color-grey-600);
-            max-width: 640px;
-        }
-
-        /* WHAT WE DO */
-        .statements {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--spacing-2xl);
-        }
-
-        .statement {
-            padding-bottom: var(--spacing-xl);
-            border-bottom: 1px solid var(--color-grey-100);
-        }
-
-        .statement:last-child {
-            border-bottom: none;
-        }
-
-        .statement-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--color-text-dark);
-            font-weight: 500;
-        }
-
-        /* HOW IT WORKS */
-        .how-it-works {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-2xl);
-        }
-
-        .work-item {
-            background-color: var(--color-bg-light);
-            padding: var(--spacing-xl);
-            border: 1px solid var(--color-grey-100);
-            border-radius: 2px;
-        }
-
-        .work-item-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--color-text-dark);
-            margin-bottom: var(--spacing-md);
-            letter-spacing: -0.3px;
-            text-transform: uppercase;
-        }
-
-        .work-item-list {
-            list-style: none;
-        }
-
-        .work-item-list li {
-            font-size: 13px;
-            color: var(--color-grey-600);
-            margin-bottom: var(--spacing-sm);
-            padding-left: var(--spacing-md);
-            position: relative;
-        }
-
-        .work-item-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--color-primary);
-            font-weight: 600;
         }
 
         /* DASHBOARD */
@@ -351,109 +238,6 @@
             color: var(--color-grey-800);
         }
 
-        /* DATA TABLE */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: var(--spacing-lg);
-            font-size: 13px;
-        }
-
-        .data-table thead {
-            background-color: var(--color-grey-50);
-            border-bottom: 2px solid var(--color-grey-300);
-        }
-
-        .data-table th {
-            padding: var(--spacing-md);
-            text-align: left;
-            font-weight: 700;
-            color: var(--color-text-dark);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .data-table td {
-            padding: var(--spacing-md);
-            border-bottom: 1px solid var(--color-grey-100);
-            color: var(--color-text-dark);
-        }
-
-        .data-table tr:hover {
-            background-color: var(--color-bg-light);
-        }
-
-        /* COMPARISON */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
-        }
-
-        .comparison-item {
-            background-color: white;
-            border: 1px solid var(--color-grey-100);
-            padding: var(--spacing-lg);
-            border-radius: 2px;
-        }
-
-        .comparison-item h3 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--color-text-dark);
-            text-transform: uppercase;
-            letter-spacing: -0.2px;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .comparison-item-data {
-            font-size: 13px;
-            color: var(--color-text-dark);
-            margin-bottom: var(--spacing-sm);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .comparison-item-value {
-            font-weight: 700;
-            font-family: var(--font-family-mono);
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: var(--color-white);
-            border-top: 1px solid var(--color-grey-100);
-            padding: var(--spacing-xl) 0;
-            margin-top: var(--spacing-3xl);
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-left {
-            font-size: 12px;
-            color: var(--color-grey-600);
-        }
-
-        .footer-right {
-            font-size: 11px;
-            color: var(--color-grey-600);
-        }
-
-        .footer-right span {
-            font-family: var(--font-family-mono);
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
         /* INFO BOX */
         .info-box {
             background-color: var(--color-bg-light);
@@ -476,50 +260,68 @@
             line-height: 1.6;
         }
 
-        /* TABS */
-        .tab-navigation {
+        /* FOOTER */
+        footer {
+            background-color: var(--color-white);
+            border-top: 1px solid var(--color-grey-100);
+            padding: var(--spacing-xl) 0;
+            margin-top: var(--spacing-3xl);
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
             display: flex;
-            gap: 0;
-            border-bottom: 1px solid var(--color-grey-300);
-            margin-bottom: var(--spacing-xl);
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
         }
 
-        .tab-btn {
-            padding: var(--spacing-md) var(--spacing-lg);
-            background-color: transparent;
-            border: none;
-            font-size: 13px;
-            font-weight: 600;
+        .footer-left {
+            font-size: 12px;
             color: var(--color-grey-600);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s;
-            position: relative;
-            bottom: -1px;
-            letter-spacing: -0.2px;
         }
 
-        .tab-btn:hover {
-            color: var(--color-text-dark);
+        .footer-right {
+            font-size: 11px;
+            color: var(--color-grey-600);
         }
 
-        .tab-btn.active {
+        .footer-right span {
+            font-family: var(--font-family-mono);
             color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
+            font-weight: 600;
         }
 
-        .tab-content {
-            display: none;
+        .debug-info {
+            background-color: var(--color-grey-50);
+            border: 1px solid var(--color-grey-300);
+            padding: var(--spacing-md);
+            border-radius: 2px;
+            font-size: 11px;
+            font-family: var(--font-family-mono);
+            color: var(--color-grey-600);
+            margin-top: var(--spacing-lg);
+            max-height: 200px;
+            overflow-y: auto;
         }
 
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.2s;
+        .debug-info div {
+            margin-bottom: 4px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .debug-success {
+            color: var(--color-success);
+        }
+
+        .debug-error {
+            color: var(--color-danger);
+        }
+
+        .debug-warning {
+            color: var(--color-warning);
         }
 
         /* RESPONSIVE */
@@ -532,25 +334,13 @@
                 font-size: 20px;
             }
 
-            nav {
-                display: none;
-            }
-
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .data-table {
-                font-size: 12px;
-            }
-
-            .data-table th,
-            .data-table td {
-                padding: var(--spacing-sm);
-            }
-
             .metrics-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -560,13 +350,10 @@
     <header>
         <div class="header-container">
             <div class="logo">GraCity</div>
-            <nav>
-                <a href="#solution">Solution</a>
-                <a href="#data">Data & Impact</a>
-                <a href="#methodology">Methodology</a>
-                <a href="#about">About</a>
-                <button class="cta-header">Request Access</button>
-            </nav>
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <span class="status-badge" id="status-badge">Live Monitoring</span>
+                <span style="font-size: 11px; color: var(--color-grey-600);">Last update: <span id="last-update">--:--</span></span>
+            </div>
         </div>
     </header>
 
@@ -576,72 +363,7 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Urban environmental impact, measured.</h1>
-                <p class="hero-subtitle">Traceable, comparable data infrastructure for cities, assets and ESG reporting. Environmental intelligence for decision-makers.</p>
-                <div class="hero-ctas">
-                    <button class="btn-primary">Request a Pilot</button>
-                    <button class="btn-secondary">View Methodology</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT WE DO -->
-        <section class="section" id="solution">
-            <div class="section-header">
-                <h2>What We Do</h2>
-            </div>
-            <div class="statements">
-                <div class="statement">
-                    <p class="statement-text">We measure air, climate, soil and biodiversity in cities.</p>
-                </div>
-                <div class="statement">
-                    <p class="statement-text">We generate primary environmental data through urban IoT networks and satellite integration.</p>
-                </div>
-                <div class="statement">
-                    <p class="statement-text">We validate impact using scientific methods and independent benchmarks.</p>
-                </div>
-                <div class="statement">
-                    <p class="statement-text">We deliver auditable metrics for public policy and ESG decisions.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- HOW IT WORKS -->
-        <section class="section">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p class="section-subtitle">Three-layer infrastructure: sensing, validation, impact.</p>
-            </div>
-            <div class="how-it-works">
-                <div class="work-item">
-                    <div class="work-item-title">Layer 1: Urban Sensing</div>
-                    <ul class="work-item-list">
-                        <li>IoT sensor networks</li>
-                        <li>Air quality monitoring</li>
-                        <li>Soil & water sensors</li>
-                        <li>Microclimate stations</li>
-                        <li>Real-time data streaming</li>
-                    </ul>
-                </div>
-                <div class="work-item">
-                    <div class="work-item-title">Layer 2: Data Validation</div>
-                    <ul class="work-item-list">
-                        <li>Satellite cross-validation</li>
-                        <li>Scientific modeling</li>
-                        <li>Confidence scoring</li>
-                        <li>Open data integration</li>
-                        <li>Audit trail logging</li>
-                    </ul>
-                </div>
-                <div class="work-item">
-                    <div class="work-item-title">Layer 3: Impact Outputs</div>
-                    <ul class="work-item-list">
-                        <li>ESG indicators</li>
-                        <li>Urban planning metrics</li>
-                        <li>Biodiversity indices</li>
-                        <li>Climate resilience scores</li>
-                        <li>Audit-ready reports</li>
-                    </ul>
-                </div>
+                <p class="hero-subtitle">Real-time environmental intelligence from Vicálvaro, Madrid. Powered by AirGradient IoT sensors and satellite validation.</p>
             </div>
         </section>
 
@@ -649,376 +371,62 @@
         <section class="section" id="data">
             <div class="section-header">
                 <h2>Live Data: Vicálvaro, Madrid</h2>
-                <p class="section-subtitle">Measured, not estimated. Real-time environmental intelligence.</p>
+                <p style="color: var(--color-grey-600); font-size: 14px; margin-top: var(--spacing-sm);">Measured, not estimated. Updates every 60 seconds.</p>
             </div>
 
-            <!-- TAB NAVIGATION -->
-            <div class="tab-navigation">
-                <button class="tab-btn active" data-tab="overview">Overview</button>
-                <button class="tab-btn" data-tab="detailed">Detailed Metrics</button>
-                <button class="tab-btn" data-tab="comparison">Garden vs Reference</button>
-                <button class="tab-btn" data-tab="plantae">IoT Sensors</button>
-            </div>
-
-            <!-- TAB 1: OVERVIEW -->
-            <div id="overview" class="tab-content active">
-                <div class="dashboard-section">
-                    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: var(--spacing-lg); text-transform: uppercase;">Current Status</h3>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">Overall Status</div>
-                            <div style="font-size: 18px; font-weight: 700; color: var(--color-success); margin-bottom: var(--spacing-sm);">GOOD</div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">PM2.5 Reduction</div>
-                            <div class="metric-value">31.2%<span class="metric-unit">vs. Reference</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Passive Cooling Effect</div>
-                            <div class="metric-value">3.2°<span class="metric-unit">C</span></div>
-                            <span class="metric-status status-modeled">Modeled</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Data Confidence</div>
-                            <div class="metric-value">94%<span class="metric-unit"></span></div>
-                            <span class="metric-status status-measured">Validated</span>
-                        </div>
+            <div class="dashboard-section">
+                <h3 style="font-size: 14px; font-weight: 700; margin-bottom: var(--spacing-lg); text-transform: uppercase;">Air Quality Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">PM2.5</div>
+                        <div class="metric-value" id="pm25">--<span class="metric-unit">µg/m³</span></div>
+                        <span class="metric-status status-measured">Measured</span>
                     </div>
-
-                    <h3 style="font-size: 14px; font-weight: 700; margin: var(--spacing-2xl) 0 var(--spacing-lg); text-transform: uppercase;">Air Quality Indicators</h3>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">PM2.5</div>
-                            <div class="metric-value">12.5<span class="metric-unit">µg/m³</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">PM10</div>
-                            <div class="metric-value">28.3<span class="metric-unit">µg/m³</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">NO₂</div>
-                            <div class="metric-value">15.8<span class="metric-unit">ppb</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">CO₂</div>
-                            <div class="metric-value">420<span class="metric-unit">ppm</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
+                    <div class="metric-card">
+                        <div class="metric-label">PM10</div>
+                        <div class="metric-value" id="pm10">--<span class="metric-unit">µg/m³</span></div>
+                        <span class="metric-status status-measured">Measured</span>
                     </div>
-
-                    <h3 style="font-size: 14px; font-weight: 700; margin: var(--spacing-2xl) 0 var(--spacing-lg); text-transform: uppercase;">Environmental Conditions</h3>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">Temperature (Garden)</div>
-                            <div class="metric-value">22.1<span class="metric-unit">°C</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Humidity (Garden)</div>
-                            <div class="metric-value">65<span class="metric-unit">%</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Soil Moisture</div>
-                            <div class="metric-value">62.4<span class="metric-unit">%</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Solar Radiation</div>
-                            <div class="metric-value">420<span class="metric-unit">lux</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
+                    <div class="metric-card">
+                        <div class="metric-label">NO₂</div>
+                        <div class="metric-value" id="no2">--<span class="metric-unit">ppb</span></div>
+                        <span class="metric-status status-measured">Measured</span>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">CO₂</div>
+                        <div class="metric-value" id="co2">--<span class="metric-unit">ppm</span></div>
+                        <span class="metric-status status-measured">Measured</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- TAB 2: DETAILED METRICS -->
-            <div id="detailed" class="tab-content">
-                <div class="dashboard-section">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Value</th>
-                                <th>Unit</th>
-                                <th>Status</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PM2.5</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">12.5</td>
-                                <td>µg/m³</td>
-                                <td><span class="metric-status status-measured">Good</span></td>
-                                <td>Measured</td>
-                            </tr>
-                            <tr>
-                                <td>PM10</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">28.3</td>
-                                <td>µg/m³</td>
-                                <td><span class="metric-status status-measured">Good</span></td>
-                                <td>Measured</td>
-                            </tr>
-                            <tr>
-                                <td>NO₂</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">15.8</td>
-                                <td>ppb</td>
-                                <td><span class="metric-status status-measured">Good</span></td>
-                                <td>Measured</td>
-                            </tr>
-                            <tr>
-                                <td>CO₂</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">420</td>
-                                <td>ppm</td>
-                                <td><span class="metric-status status-modeled">Moderate</span></td>
-                                <td>Measured</td>
-                            </tr>
-                            <tr>
-                                <td>Temperature (Indoor)</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">22.1</td>
-                                <td>°C</td>
-                                <td><span class="metric-status status-measured">Optimal</span></td>
-                                <td>Measured</td>
-                            </tr>
-                            <tr>
-                                <td>Humidity (Indoor)</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">65</td>
-                                <td>%</td>
-                                <td><span class="metric-status status-measured">Optimal</span></td>
-                                <td>Measured</td>
-                            </tr>
-                            <tr>
-                                <td>Temperature (Outdoor Reference)</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">25.3</td>
-                                <td>°C</td>
-                                <td><span class="metric-status status-satellite">Reference</span></td>
-                                <td>OpenWeatherMap</td>
-                            </tr>
-                            <tr>
-                                <td>Soil Moisture</td>
-                                <td style="font-family: var(--font-family-mono); font-weight: 600;">62.4</td>
-                                <td>%</td>
-                                <td><span class="metric-status status-measured">Good</span></td>
-                                <td>IoT Sensor</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- TAB 3: COMPARISON -->
-            <div id="comparison" class="tab-content">
-                <div class="dashboard-section">
-                    <p style="margin-bottom: var(--spacing-xl); color: var(--color-grey-600); font-size: 13px;">Comparative analysis: Instrumented vertical garden vs. open reference surface in Vicálvaro.</p>
-                    <div class="comparison-grid">
-                        <div class="comparison-item">
-                            <h3>Vertical Garden (Instrumented)</h3>
-                            <div class="comparison-item-data">
-                                <span>PM2.5</span>
-                                <span class="comparison-item-value">12.5 µg/m³</span>
-                            </div>
-                            <div class="comparison-item-data">
-                                <span>Temperature</span>
-                                <span class="comparison-item-value">22.1°C</span>
-                            </div>
-                            <div class="comparison-item-data">
-                                <span>Humidity</span>
-                                <span class="comparison-item-value">65%</span>
-                            </div>
-                            <div class="comparison-item-data">
-                                <span>CO₂</span>
-                                <span class="comparison-item-value">420 ppm</span>
-                            </div>
-                        </div>
-                        <div class="comparison-item">
-                            <h3>Open Reference (Terraza)</h3>
-                            <div class="comparison-item-data">
-                                <span>PM2.5</span>
-                                <span class="comparison-item-value">18.2 µg/m³</span>
-                            </div>
-                            <div class="comparison-item-data">
-                                <span>Temperature</span>
-                                <span class="comparison-item-value">25.3°C</span>
-                            </div>
-                            <div class="comparison-item-data">
-                                <span>Humidity</span>
-                                <span class="comparison-item-value">55%</span>
-                            </div>
-                            <div class="comparison-item-data">
-                                <span>CO₂</span>
-                                <span class="comparison-item-value">435 ppm</span>
-                            </div>
-                        </div>
+                <h3 style="font-size: 14px; font-weight: 700; margin: var(--spacing-2xl) 0 var(--spacing-lg); text-transform: uppercase;">Environmental Conditions</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Temperature (Garden)</div>
+                        <div class="metric-value" id="temp-garden">--<span class="metric-unit">°C</span></div>
+                        <span class="metric-status status-measured">Measured</span>
                     </div>
-                    <div class="info-box">
-                        <div class="info-box-title">Impact Summary</div>
-                        <div class="info-box-text">The vertical garden intervention achieves a 31.2% reduction in PM2.5 particulates, a 3.2°C cooling effect, and measurable improvement in relative humidity and CO₂ mitigation compared to the open reference surface.</div>
+                    <div class="metric-card">
+                        <div class="metric-label">Humidity (Garden)</div>
+                        <div class="metric-value" id="humidity-garden">--<span class="metric-unit">%</span></div>
+                        <span class="metric-status status-measured">Measured</span>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Temperature (Reference)</div>
+                        <div class="metric-value" id="temp-ref">--<span class="metric-unit">°C</span></div>
+                        <span class="metric-status status-satellite">OpenWeatherMap</span>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Data Confidence</div>
+                        <div class="metric-value" id="confidence">--<span class="metric-unit">%</span></div>
+                        <span class="metric-status status-measured">Validated</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- TAB 4: IOT SENSORS -->
-            <div id="plantae" class="tab-content">
-                <div class="dashboard-section">
-                    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: var(--spacing-lg); text-transform: uppercase;">Plantae IoT Network: Soil & Plant Health</h3>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">Soil Moisture</div>
-                            <div class="metric-value">62.4<span class="metric-unit">%</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Soil Temperature</div>
-                            <div class="metric-value">18.5<span class="metric-unit">°C</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Solar Radiation</div>
-                            <div class="metric-value">450<span class="metric-unit">lux</span></div>
-                            <span class="metric-status status-measured">Measured</span>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Plant Health Index</div>
-                            <div class="metric-value">8.2<span class="metric-unit">/10</span></div>
-                            <span class="metric-status status-modeled">Calculated</span>
-                        </div>
-                    </div>
-
-                    <h3 style="font-size: 14px; font-weight: 700; margin: var(--spacing-2xl) 0 var(--spacing-lg); text-transform: uppercase;">Sensor Network Status</h3>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Sensor ID</th>
-                                <th>Type</th>
-                                <th>Location</th>
-                                <th>Status</th>
-                                <th>Last Update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="font-family: var(--font-family-mono);">PLANT-001</td>
-                                <td>Soil Moisture</td>
-                                <td>Garden Zone A</td>
-                                <td><span style="color: var(--color-success); font-weight: 600;">Active</span></td>
-                                <td>Now</td>
-                            </tr>
-                            <tr>
-                                <td style="font-family: var(--font-family-mono);">PLANT-002</td>
-                                <td>Temperature</td>
-                                <td>Garden Zone A</td>
-                                <td><span style="color: var(--color-success); font-weight: 600;">Active</span></td>
-                                <td>Now</td>
-                            </tr>
-                            <tr>
-                                <td style="font-family: var(--font-family-mono);">PLANT-003</td>
-                                <td>Solar Radiation</td>
-                                <td>Garden Zone B</td>
-                                <td><span style="color: var(--color-success); font-weight: 600;">Active</span></td>
-                                <td>Now</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="debug-info" id="debug-log">
+                    <div><strong>System Status:</strong></div>
+                    <div>Initializing API connections...</div>
                 </div>
-            </div>
-        </section>
-
-        <!-- METHODOLOGY -->
-        <section class="section" id="methodology">
-            <div class="section-header">
-                <h2>Data Sources & Validation</h2>
-                <p class="section-subtitle">Full transparency. Every metric is traceable, auditable, and validated against independent sources.</p>
-            </div>
-
-            <div class="how-it-works">
-                <div class="work-item">
-                    <div class="work-item-title">Primary Data</div>
-                    <ul class="work-item-list">
-                        <li>AirGradient IoT sensors</li>
-                        <li>Plantae soil & plant monitoring</li>
-                        <li>Real-time streaming</li>
-                        <li>14-second granularity</li>
-                    </ul>
-                </div>
-                <div class="work-item">
-                    <div class="work-item-title">Validation Layer</div>
-                    <ul class="work-item-list">
-                        <li>Satellite cross-check</li>
-                        <li>Reference stations</li>
-                        <li>Scientific models</li>
-                        <li>Confidence scoring</li>
-                    </ul>
-                </div>
-                <div class="work-item">
-                    <div class="work-item-title">Audit Trail</div>
-                    <ul class="work-item-list">
-                        <li>Full API logs</li>
-                        <li>Timestamp verification</li>
-                        <li>Quality metrics</li>
-                        <li>Compliance reports</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <div class="info-box-title">Confidence Scoring</div>
-                <div class="info-box-text">Every metric includes a confidence score (0–100%). Measured data rates 94%+. Modeled data includes uncertainty bounds. All reports include methodology and limitations.</div>
-            </div>
-        </section>
-
-        <!-- USE CASES -->
-        <section class="section">
-            <div class="section-header">
-                <h2>Use Cases</h2>
-                <p class="section-subtitle">Purpose-built for decisions, not decoration.</p>
-            </div>
-
-            <div class="how-it-works">
-                <div class="work-item">
-                    <div class="work-item-title">Cities & Public Sector</div>
-                    <ul class="work-item-list">
-                        <li>District-level performance</li>
-                        <li>Climate resilience metrics</li>
-                        <li>Urban equity mapping</li>
-                        <li>Policy evidence base</li>
-                    </ul>
-                </div>
-                <div class="work-item">
-                    <div class="work-item-title">Corporates & Real Estate</div>
-                    <ul class="work-item-list">
-                        <li>Asset environmental scoring</li>
-                        <li>Tenant health metrics</li>
-                        <li>ESG baseline data</li>
-                        <li>Investment validation</li>
-                    </ul>
-                </div>
-                <div class="work-item">
-                    <div class="work-item-title">ESG & Audit</div>
-                    <ul class="work-item-list">
-                        <li>CSRD disclosure support</li>
-                        <li>Taxonomy alignment proof</li>
-                        <li>Independent verification</li>
-                        <li>Audit-ready reports</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section class="section" id="about">
-            <div class="section-header">
-                <h2>About GraCity</h2>
-            </div>
-            <p style="font-size: 14px; line-height: 1.8; color: var(--color-text-dark); max-width: 640px; margin-bottom: var(--spacing-lg);">GraCity operates urban environmental intelligence networks. We measure what cities actually generate: data. Not promises. Vicálvaro, Madrid. Operational since 2024.</p>
-            <div class="info-box">
-                <div class="info-box-title">Geographic Coverage</div>
-                <div class="info-box-text"><strong>Vicálvaro, Madrid, Spain</strong> – Flagship site with integrated IoT sensing, satellite validation, and impact assessment for urban greening interventions.</div>
             </div>
         </section>
     </main>
@@ -1026,13 +434,13 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <div class="footer-left">GraCity © 2024. Urban environmental intelligence. Last update: <span id="timestamp"></span></div>
-            <div class="footer-right">Confidence: <span>94%</span> | Status: <span>Operational</span></div>
+            <div class="footer-left">GraCity © 2026. Urban environmental intelligence. Location: <strong>Vicálvaro, Madrid</strong></div>
+            <div class="footer-right">Status: <span id="footer-status">Connecting...</span></div>
         </div>
     </footer>
 
     <script>
-        // CONFIG - PRODUCTION TOKENS INTEGRATED
+        // CONFIG - PRODUCTION TOKENS
         const CONFIG = {
             LOCATION_NAME: "Vicálvaro, Madrid",
             LOCATION_COORDS: { lat: 40.3917, lng: -3.5910 },
@@ -1049,86 +457,175 @@
             WEATHER_DEVICE_ID: "1117"
         };
 
-        // TAB FUNCTIONALITY
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
+        // DATA STORE
+        let currentData = {
+            pm25: null,
+            pm10: null,
+            no2: null,
+            co2: null,
+            tempGarden: null,
+            humidityGarden: null,
+            tempRef: null,
+            confidence: 94
+        };
 
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabName = btn.getAttribute('data-tab');
-                
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                btn.classList.add('active');
-                document.getElementById(tabName).classList.add('active');
-            });
-        });
+        // DEBUG LOG
+        const debugLog = document.getElementById('debug-log');
+        let logCount = 0;
 
-        // TIMESTAMP
-        function updateTimestamp() {
-            const now = new Date();
-            const formatted = now.toLocaleString('es-ES', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
-            document.getElementById('timestamp').textContent = formatted;
+        function addLog(message, type = 'info') {
+            logCount++;
+            const logEntry = document.createElement('div');
+            const timestamp = new Date().toLocaleTimeString('es-ES');
+            
+            if (type === 'success') {
+                logEntry.className = 'debug-success';
+                logEntry.textContent = `✓ [${timestamp}] ${message}`;
+            } else if (type === 'error') {
+                logEntry.className = 'debug-error';
+                logEntry.textContent = `✗ [${timestamp}] ${message}`;
+            } else if (type === 'warning') {
+                logEntry.className = 'debug-warning';
+                logEntry.textContent = `! [${timestamp}] ${message}`;
+            } else {
+                logEntry.textContent = `• [${timestamp}] ${message}`;
+            }
+            
+            debugLog.appendChild(logEntry);
+            debugLog.scrollTop = debugLog.scrollHeight;
+            
+            if (logCount > 20) {
+                debugLog.removeChild(debugLog.firstChild);
+                logCount--;
+            }
         }
 
-        updateTimestamp();
-        setInterval(updateTimestamp, 1000);
+        // UPDATE UI
+        function updateUI() {
+            document.getElementById('pm25').textContent = currentData.pm25 !== null ? currentData.pm25.toFixed(1) : '--';
+            document.getElementById('pm10').textContent = currentData.pm10 !== null ? currentData.pm10.toFixed(1) : '--';
+            document.getElementById('no2').textContent = currentData.no2 !== null ? currentData.no2.toFixed(1) : '--';
+            document.getElementById('co2').textContent = currentData.co2 !== null ? currentData.co2.toFixed(0) : '--';
+            document.getElementById('temp-garden').textContent = currentData.tempGarden !== null ? currentData.tempGarden.toFixed(1) : '--';
+            document.getElementById('humidity-garden').textContent = currentData.humidityGarden !== null ? currentData.humidityGarden.toFixed(0) : '--';
+            document.getElementById('temp-ref').textContent = currentData.tempRef !== null ? currentData.tempRef.toFixed(1) : '--';
+            document.getElementById('confidence').textContent = currentData.confidence;
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString('es-ES');
+        }
 
-        // AIRGRADIENT API CALL (EXAMPLE)
+        // FETCH AIRGRADIENT
         async function fetchAirGradient() {
             try {
+                addLog('Fetching AirGradient data...');
                 const url = `https://api.airgradient.com/public/api/v1/locations/${CONFIG.AIRGRADIENT_LOCATION_ID}/latest/air-data`;
+                
                 const response = await fetch(url, {
+                    method: 'GET',
                     headers: {
                         'x-api-key': CONFIG.AIRGRADIENT_API_KEY
                     }
                 });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
                 const data = await response.json();
-                console.log('AirGradient Data:', data);
-                return data;
+                console.log('AirGradient Response:', data);
+
+                if (data.pm25) {
+                    currentData.pm25 = data.pm25.value;
+                    addLog(`PM2.5: ${data.pm25.value} µg/m³`, 'success');
+                }
+                if (data.pm10) {
+                    currentData.pm10 = data.pm10.value;
+                    addLog(`PM10: ${data.pm10.value} µg/m³`, 'success');
+                }
+                if (data.noxRaw) {
+                    currentData.no2 = data.noxRaw.value;
+                    addLog(`NOx: ${data.noxRaw.value} ppb`, 'success');
+                }
+                if (data.co2) {
+                    currentData.co2 = data.co2.value;
+                    addLog(`CO₂: ${data.co2.value} ppm`, 'success');
+                }
+                if (data.humidity) {
+                    currentData.humidityGarden = data.humidity.value;
+                    addLog(`Humidity: ${data.humidity.value}%`, 'success');
+                }
+                if (data.temperature) {
+                    currentData.tempGarden = data.temperature.value;
+                    addLog(`Temperature: ${data.temperature.value}°C`, 'success');
+                }
+
+                updateUI();
+                return true;
             } catch (error) {
-                console.error('AirGradient API Error:', error);
-                return null;
+                addLog(`AirGradient Error: ${error.message}`, 'error');
+                console.error('AirGradient Error:', error);
+                return false;
             }
         }
 
-        // WEATHER API CALL (EXAMPLE)
+        // FETCH WEATHER
         async function fetchWeather() {
             try {
+                addLog('Fetching OpenWeatherMap data...');
                 const url = `https://api.openweathermap.org/data/2.5/weather?q=${CONFIG.WEATHER_CITY}&appid=${CONFIG.WEATHER_API_KEY}&units=metric`;
+                
                 const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
                 const data = await response.json();
-                console.log('Weather Data:', data);
-                return data;
+                console.log('Weather Response:', data);
+
+                if (data.main && data.main.temp) {
+                    currentData.tempRef = data.main.temp;
+                    addLog(`Reference Temp: ${data.main.temp}°C`, 'success');
+                }
+
+                updateUI();
+                return true;
             } catch (error) {
-                console.error('Weather API Error:', error);
-                return null;
+                addLog(`Weather Error: ${error.message}`, 'error');
+                console.error('Weather Error:', error);
+                return false;
             }
         }
 
-        // INITIALIZE
-        console.log('GraCity Dashboard initialized');
-        console.log('Configuration:', CONFIG);
-        console.log('Tokens integrated: AirGradient, Plantae, OpenWeatherMap');
-        
-        // Auto-fetch on interval
-        setInterval(() => {
-            console.log('Refreshing data...');
-            fetchAirGradient();
-            fetchWeather();
-        }, CONFIG.REFRESH_INTERVAL);
+        // REFRESH DATA
+        async function refreshData() {
+            addLog('------- Refresh Cycle Started -------');
+            document.getElementById('status-badge').classList.add('updating');
+            document.getElementById('status-badge').textContent = 'Updating...';
 
-        // Initial fetch
-        fetchAirGradient();
-        fetchWeather();
+            const ag = await fetchAirGradient();
+            const weather = await fetchWeather();
+
+            if (ag || weather) {
+                document.getElementById('footer-status').textContent = 'Live';
+                document.getElementById('status-badge').classList.remove('updating');
+                document.getElementById('status-badge').textContent = 'Live Monitoring';
+                addLog('✓ Data updated successfully', 'success');
+            } else {
+                document.getElementById('footer-status').textContent = 'Error';
+                addLog('⚠ Some APIs failed', 'warning');
+            }
+        }
+
+        // INIT
+        addLog('GraCity Dashboard initialized');
+        addLog(`Location: ${CONFIG.LOCATION_NAME}`);
+        addLog(`Update interval: ${CONFIG.REFRESH_INTERVAL / 1000}s`);
+
+        // First fetch
+        refreshData();
+
+        // Auto-refresh every 60 seconds
+        setInterval(refreshData, CONFIG.REFRESH_INTERVAL);
     </script>
 </body>
 </html>

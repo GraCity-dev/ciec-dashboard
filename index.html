@@ -460,22 +460,12 @@
             document.getElementById('last-update').textContent = new Date().toLocaleTimeString('es-ES');
         }
 
-        // FETCH AIRGRADIENT
+                       // FETCH AIRGRADIENT
         async function fetchAirGradient() {
             try {
                 addLog('Fetching AirGradient data...');
-                const locationId = '73973';
-                const apiKey = '1fdbb68d-73a2-4d82-b6aa-05cb7d9c0ec1';
                 
-                                const apiUrl = `https://api.airgradient.com/public/api/v1/locations/${locationId}/latest/air-data`;
                 const response = await fetch('/api/fetch-air-data');
-            
-                const response = await fetch(proxyUrl, {
-                    headers: {
-                        'x-api-key': apiKey
-                    }
-                });
-
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);

@@ -1,9 +1,8 @@
 {
   "buildCommand": "echo 'Static'",
   "outputDirectory": ".",
-  "env": {},
   "functions": {
-    "api/**/*.js": {
+    "functions/**/*.js": {
       "runtime": "nodejs18.x"
     }
   }

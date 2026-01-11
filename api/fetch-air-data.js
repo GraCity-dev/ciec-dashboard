@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+  // CORS básico
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Content-Type', 'application/json');
@@ -10,18 +11,20 @@ export default async function handler(req, res) {
   try {
     const locationId = '73973';
     const apiKey = '1fdbb68d-73a2-4d82-b6aa-05cb7d9c0ec1';
-    
+
     const response = await fetch(
       `https://api.airgradient.com/public/api/v1/locations/${locationId}/latest/air-data`,
       {
         headers: {
-          'x-api-key': apiKey
-        }
+          'x-api-key': apiKey,
+        },
       }
     );
 
     if (!response.ok) {
-      return res.status(response.status).json({ error: `AirGradient: ${response.statusText}` });
+      return res
+        .status(response.status)
+        .json({ error: `AirGradient: ${response.statusText}` });
     }
 
     const data = await response.json();

@@ -460,7 +460,7 @@
             document.getElementById('last-update').textContent = new Date().toLocaleTimeString('es-ES');
         }
 
-                                  // FETCH AIRGRADIENT - Direct API
+                                      // FETCH AIRGRADIENT
         async function fetchAirGradient() {
             try {
                 addLog('Fetching AirGradient data...');
@@ -498,6 +498,41 @@
                     };
                 }
 
+                console.log('AirGradient Response:', data);
+
+                if (data.pm25) {
+                    currentData.pm25 = data.pm25.value;
+                    addLog(`PM2.5: ${data.pm25.value} µg/m³`, 'success');
+                }
+                if (data.pm10) {
+                    currentData.pm10 = data.pm10.value;
+                    addLog(`PM10: ${data.pm10.value} µg/m³`, 'success');
+                }
+                if (data.noxRaw) {
+                    currentData.no2 = data.noxRaw.value;
+                    addLog(`NOx: ${data.noxRaw.value} ppb`, 'success');
+                }
+                if (data.co2) {
+                    currentData.co2 = data.co2.value;
+                    addLog(`CO₂: ${data.co2.value} ppm`, 'success');
+                }
+                if (data.humidity) {
+                    currentData.humidityGarden = data.humidity.value;
+                    addLog(`Humidity: ${data.humidity.value}%`, 'success');
+                }
+                if (data.temperature) {
+                    currentData.tempGarden = data.temperature.value;
+                    addLog(`Temperature: ${data.temperature.value}°C`, 'success');
+                }
+
+                updateUI();
+                return true;
+            } catch (error) {
+                addLog(`AirGradient Error: ${error.message}`, 'error');
+                console.error('AirGradient Error:', error);
+                return false;
+            }
+        }
 
         // FETCH WEATHER
         async function fetchWeather() {

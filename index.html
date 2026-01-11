@@ -513,18 +513,14 @@
             document.getElementById('last-update').textContent = new Date().toLocaleTimeString('es-ES');
         }
 
-        // FETCH AIRGRADIENT
+               // FETCH AIRGRADIENT via Vercel Proxy
         async function fetchAirGradient() {
             try {
                 addLog('Fetching AirGradient data...');
-                const url = `https://api.airgradient.com/public/api/v1/locations/${CONFIG.AIRGRADIENT_LOCATION_ID}/latest/air-data`;
+                const url = `/api/proxy?source=airgradient`;
                 
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'x-api-key': CONFIG.AIRGRADIENT_API_KEY
-                    }
-                });
+                               const response = await fetch(url);
+
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
@@ -567,11 +563,11 @@
             }
         }
 
-        // FETCH WEATHER
+                // FETCH WEATHER via Vercel Proxy
         async function fetchWeather() {
             try {
                 addLog('Fetching OpenWeatherMap data...');
-                const url = `https://api.openweathermap.org/data/2.5/weather?q=${CONFIG.WEATHER_CITY}&appid=${CONFIG.WEATHER_API_KEY}&units=metric`;
+                const url = `/api/proxy?source=weather`;
                 
                 const response = await fetch(url);
 

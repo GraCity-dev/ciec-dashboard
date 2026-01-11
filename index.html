@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GraCity Urban Environmental Intelligence</title>
-    <script src="https://cdn.jsdelivr.net/npm/paho-mqtt@1.0.3/paho-mqtt.js"></script>
     <style>
         * {
             margin: 0;
@@ -49,7 +48,6 @@
             font-size: 14px;
         }
 
-        /* HEADER */
         header {
             background-color: var(--color-white);
             border-bottom: 1px solid var(--color-grey-100);
@@ -95,14 +93,12 @@
             color: var(--color-danger);
         }
 
-        /* MAIN CONTAINER */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
         }
 
-        /* HERO */
         .hero {
             padding: var(--spacing-3xl) 0;
             background-color: var(--color-white);
@@ -131,7 +127,6 @@
             max-width: 640px;
         }
 
-        /* SECTION STYLES */
         .section {
             padding: var(--spacing-3xl) 0;
             border-top: 1px solid var(--color-grey-100);
@@ -150,7 +145,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* DASHBOARD */
         .dashboard-section {
             background-color: var(--color-bg-light);
             padding: var(--spacing-2xl);
@@ -212,12 +206,6 @@
             color: var(--color-primary);
         }
 
-        .status-satellite {
-            background-color: rgba(212, 212, 207, 0.5);
-            color: var(--color-grey-800);
-        }
-
-        /* FOOTER */
         footer {
             background-color: var(--color-white);
             border-top: 1px solid var(--color-grey-100);
@@ -252,7 +240,6 @@
             font-weight: 600;
         }
 
-        /* DEBUG */
         .debug-info {
             background-color: var(--color-grey-50);
             border: 1px solid var(--color-grey-300);
@@ -282,7 +269,6 @@
             color: var(--color-warning);
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
@@ -301,7 +287,6 @@
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
         <div class="header-container">
             <div class="logo">GraCity</div>
@@ -312,9 +297,7 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="container">
-        <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Urban environmental impact, measured.</h1>
@@ -322,7 +305,6 @@
             </div>
         </section>
 
-        <!-- LIVE DASHBOARD -->
         <section class="section" id="data">
             <div class="section-header">
                 <h2>Live Data: Vicálvaro, Madrid</h2>
@@ -394,7 +376,6 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-left">GraCity © 2026. Urban environmental intelligence. Location: <strong>Vicálvaro, Madrid</strong></div>
@@ -403,7 +384,6 @@
     </footer>
 
     <script>
-        // ===== DATA STORE =====
         let currentData = {
             pm25: null,
             pm10: null,
@@ -415,7 +395,6 @@
             confidence: 94
         };
 
-        // ===== DEBUG LOG =====
         const debugLog = document.getElementById('debug-log');
         let logCount = 0;
 
@@ -446,7 +425,6 @@
             }
         }
 
-        // ===== UPDATE UI =====
         function updateUI() {
             document.getElementById('pm25').textContent = currentData.pm25 != null ? currentData.pm25.toFixed(1) : '--';
             document.getElementById('pm10').textContent = currentData.pm10 != null ? currentData.pm10.toFixed(1) : '--';
@@ -459,87 +437,36 @@
             document.getElementById('last-update').textContent = new Date().toLocaleTimeString('es-ES');
         }
 
-        // ===== MQTT CONNECTION =====
-        let mqttClient = null;
-
-        function initMQTT() {
+        async function fetchAirGradient() {
             try {
-                addLog('Connecting to MQTT broker...', 'warning');
-                
-                mqttClient = new Paho.MQTT.Client(
-                    'mqtt.flespi.io',
-                    8883,
-                    'gracity-' + Math.random().toString(36).substr(2, 9)
-                );
+                addLog('Fetching AirGradient data...');
+                const response = await fetch('/api/fetch-air-data');
 
-                mqttClient.onConnectionLost = onConnectionLost;
-                mqttClient.onMessageArrived = onMessageArrived;
-
-                mqttClient.connect({
-                    useSSL: true,
-                    userName: '6Hpc8q0ipW1CugWXKmPdMoTx3uwU31XtlkCiXq6JA6an8MAX9b27pUTE1Pj4zYsm',
-                    password: '',
-                    onSuccess: onConnect,
-                    onFailure: onConnectFailure,
-                    reconnect: true
-                });
-            } catch (error) {
-                addLog(`MQTT Init Error: ${error.message}`, 'error');
-            }
-        }
-
-        function onConnect() {
-            addLog('Connected to MQTT broker', 'success');
-            mqttClient.subscribe('gracity/ciec2/measures');
-        }
-
-        function onConnectFailure(error) {
-            addLog(`MQTT Connection Failed: ${error.errorMessage}`, 'error');
-        }
-
-        function onConnectionLost(responseObject) {
-            if (responseObject.errorCode !== 0) {
-                addLog('MQTT Connection Lost', 'warning');
-            }
-        }
-
-        function onMessageArrived(message) {
-            try {
-                const payload = JSON.parse(message.payloadString);
-                console.log('MQTT Message:', payload);
-
-                if (payload.pm25 !== undefined) {
-                    currentData.pm25 = payload.pm25;
-                    addLog(`PM2.5: ${payload.pm25} µg/m³ (REAL)`, 'success');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
                 }
-                if (payload.pm10 !== undefined) {
-                    currentData.pm10 = payload.pm10;
-                    addLog(`PM10: ${payload.pm10} µg/m³ (REAL)`, 'success');
-                }
-                if (payload.noxRaw !== undefined) {
-                    currentData.no2 = payload.noxRaw;
-                    addLog(`NOx: ${payload.noxRaw} ppb (REAL)`, 'success');
-                }
-                if (payload.co2 !== undefined) {
-                    currentData.co2 = payload.co2;
-                    addLog(`CO₂: ${payload.co2} ppm (REAL)`, 'success');
-                }
-                if (payload.humidity !== undefined) {
-                    currentData.humidityGarden = payload.humidity;
-                    addLog(`Humidity: ${payload.humidity}% (REAL)`, 'success');
-                }
-                if (payload.temperature !== undefined) {
-                    currentData.tempGarden = payload.temperature;
-                    addLog(`Temperature: ${payload.temperature}°C (REAL)`, 'success');
-                }
+
+                const data = await response.json();
+                console.log('AirGradient Response:', data);
+
+                // Ajusta estos campos según el JSON real devuelto por /latest/air-data
+                if (data.pm25 !== undefined) currentData.pm25 = data.pm25;
+                if (data.pm10 !== undefined) currentData.pm10 = data.pm10;
+                if (data.nox !== undefined) currentData.no2 = data.nox;
+                if (data.co2 !== undefined) currentData.co2 = data.co2;
+                if (data.temperature !== undefined) currentData.tempGarden = data.temperature;
+                if (data.humidity !== undefined) currentData.humidityGarden = data.humidity;
 
                 updateUI();
+                addLog('AirGradient data updated', 'success');
+                return true;
             } catch (error) {
-                console.error('Error parsing MQTT message:', error);
+                addLog(`AirGradient Error: ${error.message}`, 'error');
+                console.error('AirGradient Error:', error);
+                return false;
             }
         }
 
-        // ===== FETCH WEATHER =====
         async function fetchWeather() {
             try {
                 addLog('Fetching OpenWeatherMap data...');
@@ -568,42 +495,36 @@
             }
         }
 
-        // ===== REFRESH DATA =====
         async function refreshData() {
             addLog('------- Refresh Cycle Started -------');
-            document.getElementById('status-badge').classList.add('updating');
-            document.getElementById('status-badge').textContent = 'Updating...';
-            
-            const weather = await fetchWeather();
-            
-            if (weather) {
+            const badge = document.getElementById('status-badge');
+            badge.classList.add('updating');
+            badge.textContent = 'Updating...';
+
+            const [airOk, weatherOk] = await Promise.all([
+                fetchAirGradient(),
+                fetchWeather()
+            ]);
+
+            if (airOk || weatherOk) {
                 document.getElementById('footer-status').textContent = 'Live';
-                document.getElementById('status-badge').classList.remove('updating');
-                document.getElementById('status-badge').classList.remove('error');
-                document.getElementById('status-badge').textContent = 'Live Monitoring';
+                badge.classList.remove('updating');
+                badge.classList.remove('error');
+                badge.textContent = 'Live Monitoring';
                 addLog('✓ Data updated successfully', 'success');
             } else {
                 document.getElementById('footer-status').textContent = 'Error';
-                document.getElementById('status-badge').classList.add('error');
-                document.getElementById('status-badge').textContent = 'Connection Error';
+                badge.classList.add('error');
+                badge.textContent = 'Connection Error';
                 addLog('Some APIs failed', 'warning');
             }
         }
 
-        // ===== INIT =====
         addLog('GraCity Dashboard initialized');
         addLog('Location: Vicálvaro, Madrid');
         addLog('Update interval: 60s');
-        
-        // Initialize MQTT immediately
-        initMQTT();
-        
-        // First refresh after MQTT connects
-        setTimeout(() => {
-            refreshData();
-        }, 2000);
-        
-        // Auto-refresh every 60 seconds
+
+        refreshData();
         setInterval(refreshData, 60000);
     </script>
 </body>

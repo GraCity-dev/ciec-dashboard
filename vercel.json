@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "Dashboard V9.html",
+      "src": "index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/Dashboard V9.html"
+      "dest": "/index.html"
     }
   ]
 }

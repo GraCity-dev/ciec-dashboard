@@ -467,14 +467,15 @@
                 const locationId = '73973';
                 const apiKey = '1fdbb68d-73a2-4d82-b6aa-05cb7d9c0ec1';
                 
-                const response = await fetch(
-                    `https://api.airgradient.com/public/api/v1/locations/${locationId}/latest/air-data`,
-                    {
-                        headers: {
-                            'x-api-key': apiKey
-                        }
+                                const apiUrl = `https://api.airgradient.com/public/api/v1/locations/${locationId}/latest/air-data`;
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
+                
+                const response = await fetch(proxyUrl, {
+                    headers: {
+                        'x-api-key': apiKey
                     }
-                );
+                });
+
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);

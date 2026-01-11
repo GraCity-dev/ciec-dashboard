@@ -468,8 +468,8 @@
                 const apiKey = '1fdbb68d-73a2-4d82-b6aa-05cb7d9c0ec1';
                 
                                 const apiUrl = `https://api.airgradient.com/public/api/v1/locations/${locationId}/latest/air-data`;
-                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
-                
+                const response = await fetch('/api/fetch-air-data');
+            
                 const response = await fetch(proxyUrl, {
                     headers: {
                         'x-api-key': apiKey

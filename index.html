@@ -611,11 +611,19 @@
         addLog('Location: Vicálvaro, Madrid');
         addLog('Update interval: 60s');
         
+        // Initialize MQTT immediately
+        setTimeout(() => {
+            initMQTT();
+        }, 500);
+        
         // First fetch
-        refreshData();
+        setTimeout(() => {
+            refreshData();
+        }, 2000);
         
         // Auto-refresh every 60 seconds
         setInterval(refreshData, 60000);
+
 
     </script>
 </body>
